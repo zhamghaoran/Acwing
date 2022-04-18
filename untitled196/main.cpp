@@ -1,24 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
-int a,b,c;
+int b,maxx;
+map<string ,int > qaq;
+string faq[3],a;
 int main() {
-    cin>>a>>b>>c;
-    int minn = 0x3f3f3f3f;
-    int x,y;
-    int faq;
-    for(int i = 1;i <= c;i ++) {
-        cin>>x>>y;
-        bool cmp = false;
-        for(int j = 1;j <= y;j ++) {
-            cin>>faq;
-            if(faq == a)
-                cmp = 1;
-            if(faq == b && cmp)
-                minn = min(minn,x);
-        }
+    cin>>b;
+    for(int i = 1;i <= b;i ++) {
+        cin>>faq[0]>>faq[1]>>faq[2];
+        sort(faq,faq + 3);
+        qaq[faq[0] + faq[1] + faq[2]] ++;
+        maxx = max(maxx,qaq[faq[0] + faq[1] + faq[2]]);
     }
-    if(minn < 0x3f3f3f3f)
-        cout<<minn;
-    else
-        cout<<-1;
+    cout<<maxx;
+    return 0;
 }
